@@ -49,7 +49,7 @@
             @if (Route::has('login'))
                             <div class="top-right links">
                     @auth
-                                 <a href="{{ url('/home') }}">Home</a>
+                                 <a href="{{ url('/log_out') }}">Log out</a>
                     @else
                                  <a href="{{ route('login') }}">Login</a>
                                  <a href="{{ route('register') }}">Register</a>
@@ -86,7 +86,7 @@
         <div class="col-lg-3">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Draggable Events</h5>
+                    <h5>Events on this month</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -107,12 +107,12 @@
                 </div>
                 <div class="ibox-content">
                     <div id='external-events'>
-                        <p>Anda bisa memindahkan item</p>
-                        <div class='external-event navy-bg'>Rapat panitia umum</div>
-                        <div class='external-event navy-bg'>Meeting di kantor pusat </div>
-                        <div class='external-event navy-bg'>Jumpa pers</div>
-                        <div class='external-event navy-bg'>Rapat dana oprasional</div>
-                        <div class='external-event navy-bg'>Kunjungan ke NTB</div>
+                        <p>Daftar agenda</p>
+                        <div class='external-event navy-bg'>Pembukaan kantor cabang</div>
+                        <div class='external-event navy-bg'>Kunjungan kantor cabang</div>
+                        <div class='external-event navy-bg'>Meeting</div>
+                        <div class='external-event navy-bg'>Penggalangan dana untuk fakir</div>
+                        <div class='external-event navy-bg'>Pemberian dana untuk fakir</div>
                         <p class="m-t">
                             <input type='checkbox' id='drop-remove' class="i-checks" checked /> <label for='drop-remove'>Hapus setelah dipindah</label>
                         </p>
@@ -123,7 +123,7 @@
             <div class="col-lg-9">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Jadwal Bulanan</h5>
+                    <h5>Calender</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
