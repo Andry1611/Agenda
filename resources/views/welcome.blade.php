@@ -1,415 +1,284 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <!-- Mobile Specific Meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicon-->
-  <link rel="shortcut icon" href="img/fav.png">
-  <!-- Author Meta -->
-  <meta name="author" content="colorlib">
-  <!-- Meta Description -->
-  <meta name="description" content="">
-  <!-- Meta Keyword -->
-  <meta name="keywords" content="">
-  <!-- meta character set -->
-  <meta charset="UTF-8">
-  <!-- Site Title -->
-  <title>Agenda</title>
+        <title>Agenda</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
-  <!--
-      CSS
-      ============================================= -->
-  <link rel="stylesheet" href="{{ asset('templates/css/linearicons.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/font-awesome.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/bootstrap.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/magnific-popup.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/nice-select.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/animate.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/owl.carousel.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/jquery-ui.css') }}">
-  <link rel="stylesheet" href="{{ asset('templates/css/main.css') }}">
-</head>
+    <link rel="stylesheet" href="{{ asset('templates/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600') }}">
+    <link rel="stylesheet" href="{{ asset('templates/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('templates/css/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('templates/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('templates/css/tooplate.css') }}">
+    <link href="{{ asset('templated/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('templated/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('templated/css/plugins/iCheck/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('templated/css/plugins/fullcalendar/fullcalendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('templated/css/plugins/fullcalendar/fullcalendar.print.css') }}" rel='            stylesheet' media='print'>
+    <link href="{{ asset('templated/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('templated/css/style.css') }}" rel="stylesheet">
 
-<body>
-  <!-- start header Area -->
-  <header id="header">
-    <div class="header-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
-            <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-            </ul>
-          </div>
-          <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+    <style>
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+        .links >a{
+            color: #000;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase; 
+        }
+    </style>
+    </head>
+<body id="reportsPage">
+    <div class="" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
+                            <h1 class="tm-site-title mb-0">Agenda</h1>
+                            <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                            <div class="top-right links">
+                    @auth
+                                 <a href="{{ url('/home') }}">Home</a>
+                    @else
+                                 <a href="{{ route('login') }}">Login</a>
+                                 <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                            </div>
+            @endif
+                         </div>
+                        </a>
+                        <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-            <a class="book-now" href="{{ asset('templates/member.html') }}">Login</a>
-          </div>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item">
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Daily Report</a>
+                                        <a class="dropdown-item" href="#">Weekly Report</a>
+                                        <a class="dropdown-item" href="#">Yearly Report</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div><div class="wrapper wrapper-content">
+    <div class="row animated fadeInDown">
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Draggable Events</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#" class="dropdown-item">Config option 1</a>
+                            </li>
+                            <li><a href="#" class="dropdown-item">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div id='external-events'>
+                        <p>Anda bisa memindahkan item</p>
+                        <div class='external-event navy-bg'>Rapat panitia umum</div>
+                        <div class='external-event navy-bg'>Meeting di kantor pusat </div>
+                        <div class='external-event navy-bg'>Jumpa pers</div>
+                        <div class='external-event navy-bg'>Rapat dana oprasional</div>
+                        <div class='external-event navy-bg'>Kunjungan ke NTB</div>
+                        <p class="m-t">
+                            <input type='checkbox' id='drop-remove' class="i-checks" checked /> <label for='drop-remove'>Hapus setelah dipindah</label>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="container main-menu">
-      <div class="row align-items-center justify-content-between d-flex">
-        <div id="logo">
-          <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+            <div class="col-lg-9">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Jadwal Bulanan</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="/" class="dropdown-item">Soul Setting</a>
+                            </li>
+                            <li><a href="youtube.com" class="dropdown-item">Mind Setting</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div id="calendar"></div>
+                </div>
+            </div>
         </div>
-        <nav id="nav-menu-container">
-          <ul class="nav-menu">
-            <li><a class="active" href="#">Home</a></li>
-            <li><a href="{{ asset('templates/about.html') }}">About</a></li>
-            <li><a href="trainers.html">Note</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav><!-- #nav-menu-container -->
-      </div>
     </div>
-  </header>
-  <!-- end header Area -->
-
-  <!-- start banner Area -->
-  <section class="banner-area relative" id="home">
-    <div class="overlay overlay-bg"></div>
-    <div class="container-fluid">
-      <div class="row fullscreen d-flex align-items-center justify-content-between">
-        <div class="col-lg-6 col-md-6 banner-img">
-          <img class="img-fluid" src="img/banner-img.png" alt="">
+</div>
+            <!-- row -->
+            <div class="row tm-content-row tm-mt-big">
+            <footer class="row tm-mt-small">
+            </footer>
         </div>
-        <div class="banner-content col-lg-6 col-md-6">
-      </div>
     </div>
-  </section>
-  <!-- End banner Area -->
+<script src="{{ asset('templated/js/plugins/fullcalendar/moment.min.js') }}"></script>
+<script src="{{ asset('templated/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('templated/js/popper.min.js') }}"></script>
+<script src="{{ asset('templated/js/bootstrap.js') }}"></script>
+<script src="{{ asset('templated/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+<script src="{{ asset('templated/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
-  <!-- Start About Us Area -->
-  <section class="about-area section-gap">
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-12">
-          <div class="section-title-wrap text-center">
-            <h1>Don't miss important things in your life</h1>
-            <p>Jangan sampai lupa hal yang penting dalam hidupmu.</p>
-            <p>          
- <meta charset='utf-8' />
-<link href="{{ asset (' templates/packages/core/main.css' ) }} "rel='stylesheet' />
-<link href="{{ asset (' templates/packages/daygrid/main.css' ) }} "rel='stylesheet' />
-<link href="{{ asset (' templates/packages/timegrid/main.css' ) }} "rel='stylesheet' />
-<link href="{{ asset (' templates/packages/list/main.css' ) }} "rel='stylesheet' />
-<script src="{{ asset (' templates/packages/core/main.js') }} "></script>
-<script src="{{ asset (' templates/packages/interaction/main.js') }}"></script>
-<script src="{{ asset (' templates/packages/daygrid/main.js') }}"></script>
-<script src="{{ asset (' templates/packages/timegrid/main.js') }}"></script>
-<script src="{{ asset (' templates/packages/list/main.js') }}"></script>
+<!-- Custom and plugin javascript -->
+<script src="{{ asset('templated/js/inspinia.js') }}"></script>
+<script src="{{ asset('templated/js/plugins/pace/pace.min.js') }}"></script>
+
+<!-- jQuery UI  -->
+<script src="{{ asset('templated/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<!-- iCheck -->
+<script src="{{ asset('templated/js/plugins/iCheck/icheck.min.js') }}"></script>
+
+<!-- Full Calendar -->
+<script src="{{ asset('templated/js/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+
 <script>
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+    $(document).ready(function() {
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
-      height: 'parent',
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-      },
-      defaultView: 'dayGridMonth',
-      defaultDate: '2019-08-12',
-      navLinks: true, // can click day/week names to navigate views
-      editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2019-08-01',
-        },
-        {
-          title: 'Long Event',
-          start: '2019-08-07',
-          end: '2019-08-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-08-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-08-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2019-08-11',
-          end: '2019-08-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2019-08-12T10:30:00',
-          end: '2019-08-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2019-08-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2019-08-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2019-08-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2019-08-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2019-08-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2019-08-28'
-        }
-      ]
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+        /* initialize the external events
+         -----------------------------------------------------------------*/
+
+
+        $('#external-events div.external-event').each(function() {
+
+            // store data so the calendar knows to render an event upon drop
+            $(this).data('event', {
+                title: $.trim($(this).text()), // use the element's text as the event title
+                stick: true // maintain when user navigates (see docs on the renderEvent method)
+            });
+
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+                zIndex: 1111999,
+                revert: true,      // will cause the event to go back to its
+                revertDuration: 0  //  original position after the drag
+            });
+
+        });
+
+
+        /* initialize the calendar
+         -----------------------------------------------------------------*/
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar
+            drop: function() {
+                // is the "remove after drop" checkbox checked?
+                if ($('#drop-remove').is(':checked')) {
+                    // if so, remove the element from the "Draggable Events" list
+                    $(this).remove();
+                }
+            },
+            events: [
+                {
+                    title: 'All Day Event',
+                    start: new Date(y, m, 1)
+                },
+                {
+                    title: 'Long Event',
+                    start: new Date(y, m, d-5),
+                    end: new Date(y, m, d-2)
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: new Date(y, m, d-3, 16, 0),
+                    allDay: false
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: new Date(y, m, d+4, 16, 0),
+                    allDay: false
+                },
+                {
+                    title: 'Meeting',
+                    start: new Date(y, m, d, 10, 30),
+                    allDay: false
+                },
+                {
+                    title: 'Lunch',
+                    start: new Date(y, m, d, 12, 0),
+                    end: new Date(y, m, d, 14, 0),
+                    allDay: false
+                },
+                {
+                    title: 'Birthday Party',
+                    start: new Date(y, m, d+1, 19, 0),
+                    end: new Date(y, m, d+1, 22, 30),
+                    allDay: false
+                },
+                {
+                    title: 'Click for Google',
+                    start: new Date(y, m, 28),
+                    end: new Date(y, m, 29),
+                    url: 'http://google.com/'
+                }
+            ]
+        });
+
+
     });
 
-    calendar.render();
-  });
-
-</script></p>
-          </div>
-        </div>
-      </div>
-        <div class="col-lg-6 about-left">
-          <img class="img-fluid" src="img/about-img.png" alt="">
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End About Us Area -->
-
-  <!-- Start Features Area -->
-  <!-- End Features Area -->
-
-  <!-- Start schedule Area -->
-  <section class="schedule-area section-gap">
-    <img class="featured-img img-fluid" src="img/featured-class/feature-img.png" alt="">
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-12">
-          <div class="section-title-wrap text-center">
-            <h1>Jadwal mu hari ini</h1>
-          </div>
-        </div>
-      </div>
-            <center>
-              <div class="col-md-6">
-                <div class="card card-tasks">
-                  <div class="card-header ">
-                    <h4 class="card-title">Catatan</h4>
-                    <p class="card-category">Jalanin aja dulu</p>
-                  </div>
-                  <div class="card-body ">
-                    <div class="table-full-width">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>
-<!--                               <div class="form-check">
-                                <label class="form-check-label">
-                                  <input class="form-check-input  select-all-checkbox" type="checkbox" data-select="checkbox" data-target=".task-select">
-                                  <span class="form-check-sign"></span>
-                                </label>
-                              </div> -->
-                            </th>
-                            <th>Jadwal</th>
-                            <th>tanggal</th>
-                            <th></th>
-                            <th>jam</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input class="form-check-input task-select" type="checkbox">
-                                  <span class="form-check-sign"></span>
-                                </label>
-                              </div>
-                            </td>
-                            <td>Rapat kantor  </td>
-                            <td>06-09 2019</td>
-                            <td></td>
-                            <td>10:10</td>
-                            <td class="td-actions text-right">
-                              <div class="form-button-action">
-                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                  <i class="la la-edit"></i>
-                                </button>
-                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                  <i class="la la-times"></i>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input class="form-check-input task-select" type="checkbox">
-                                  <span class="form-check-sign"></span>
-                                </label>
-                              </div>
-                            </td>
-                            <td>Meeting</td>
-                            <td>07-09 2019</td>
-                            <td></td>
-                            <td>09:10</td>
-                            <td class="td-actions text-right">
-                              <div class="form-button-action">
-                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                  <i class="la la-edit"></i>
-                                </button>
-                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                  <i class="la la-times"></i>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input class="form-check-input task-select" type="checkbox">
-                                  <span class="form-check-sign"></span>
-                                </label>
-                              </div>
-                            </td>
-                            <td>Study tour</td>
-                            <td>08-09 2019</td>
-                            <td></td>
-                            <td>08:00</td>
-                            <td class="td-actions text-right">
-                              <div class="form-button-action">
-                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                  <i class="la la-edit"></i>
-                                </button>
-                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                  <i class="la la-times"></i>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input class="form-check-input task-select" type="checkbox">
-                                  <span class="form-check-sign"></span>
-                                </label>
-                              </div>
-                            </td>
-                            <td>Liburan ke monas</td>
-                            <td>10-09 2019</td>
-                            <td></td>
-                            <td>07:006    </td>
-                            <td class="td-actions text-right">
-                              <div class="form-button-action">
-                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                  <i class="la la-edit"></i>
-                                </button>
-                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                  <i class="la la-times"></i>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </center>
-  </section>
-  <!-- End schedule Area -->
-
-  <!-- Start testomial Area -->
-  <!-- End testomial Area -->
-
-  <!-- Start cta-one Area -->
-  <section class="cta-one-area relative section-gap">
-          <a class="primary-btn" href="#">Become a Member</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End cta-one Area -->
-
-  <!-- Start blog Area -->
-
-  <!-- End blog Area -->
-
-  <!-- start footer Area -->
-  <footer class="footer-area section-gap">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3  col-md-6 col-sm-6">
-          <div class="single-footer-widget">
-            <h4>Contact</h4>
-            <p>
-            0812-6532-568 <p>(Aji Imanudin)</p>
-            <br> 
-            021-1122-34 <P>(Amin Sukarjono)</P>
-            </p>
-           <p>
-              Jalan kemerdekaan timur no 17, Jakarta timur, DKI Jakarta, Indonesia.
-            </p>
-          </div>
-        </div>
-        </div>
-      <div class="footer-bottom row align-items-center">
-        <p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-        <div class="col-lg-6 col-sm-12 footer-social">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-dribbble"></i></a>
-          <a href="#"><i class="fa fa-behance"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- End footer Area -->
-
-
-  <script src="{{ asset('templates/js/vendor/jquery-2.2.4.min.js')}}"></script>
-  <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-   crossorigin="anonymous"></script>
-  <script src="{{ asset('templates/js/vendor/bootstrap.min.js')}}"></script>
-  <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA') }}"></script>
-  <script src="{{ asset('templates/js/easing.min.js')}}"></script>
-  <script src="{{ asset('templates/js/hoverIntent.js')}}"></script>
-  <script src="{{ asset('templates/js/superfish.min.js')}}"></script>
-  <script src="{{ asset('templates/js/jquery.ajaxchimp.min.js')}}"></script>
-  <script src="{{ asset('templates/js/jquery.magnific-popup.min.js')}}"></script>
-  <script src="{{ asset('templates/js/jquery.tabs.min.js')}}"></script>
-  <script src="{{ asset('templates/js/jquery.nice-select.min.js')}}"></script>
-  <script src="{{ asset('templates/js/owl.carousel.min.js')}}"></script>
-  <script src="{{ asset('templates/js/mail-script.js')}}"></script>
-  <script src="{{ asset('templates/js/main.js')}}"></script>
-</body>
-
+</script>
+</body> 
 </html>
